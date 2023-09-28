@@ -1,0 +1,1137 @@
+openapi: "3.0.0"
+
+info:
+  title: API for book story system
+  version: 0.0.1
+
+servers:
+  - url: http://locahost:8080
+    description: Optional server description, e.g. Main (production) server
+
+tags:
+  - name: Publisher
+    description: Everything about book story publisher
+
+paths:
+  /publisher/list:
+    get:
+      description: List all Publishers
+      operationId: GetPublisherList
+      tags:
+        - Publisher
+      parameters:
+        - $ref: '#/components/parameters/PageNumberParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+        - $ref: '#/components/parameters/SortingFieldParam'
+        - $ref: '#/components/parameters/SortingDirectionParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetPublisherList'
+
+  /publisher:
+    post:
+      description: Create a publisher
+      operationId: PostPublisher
+      tags:
+        - Publisher
+      requestBody:
+        $ref: '#/components/requestBodies/postPublisher'
+      responses:
+        '201':
+          $ref: '#/components/responses/postPublisher'
+
+  /publisher/{id}:
+
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+
+    get:
+      operationId: getPublisherId
+      description: get Publisher by id
+      tags:
+        - Publisher
+      responses:
+        '200':
+          $ref: '#/components/responses/getPublisher'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updatePublisher
+      description: update Publisher by id
+      tags:
+        - Publisher
+      requestBody:
+        $ref: '#/components/requestBodies/putPublisher'
+      responses:
+        '200':
+          $ref: '#/components/responses/putPublisher'
+
+    delete:
+      operationId: deletePublisherById
+      description: delete Publisher by id
+      tags:
+        - Publisher
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+          
+  
+  /author/list:
+    get:
+      description: List all Authors
+      operationId: GetAuthorList
+      tags:
+        - Author
+      parameters:
+        - $ref: '#/components/parameters/PageNumberParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+        - $ref: '#/components/parameters/SortingFieldParam'
+        - $ref: '#/components/parameters/SortingDirectionParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetAuthorList'
+
+  /author:
+    post:
+      description: Create a author
+      operationId: PostAuthor
+      tags:
+        - Author
+      requestBody:
+        $ref: '#/components/requestBodies/postAuthor'
+      responses:
+        '201':
+          $ref: '#/components/responses/postAuthor'
+
+  /author/{id}:
+
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+
+    get:
+      operationId: getAuthorId
+      description: get Author by id
+      tags:
+        - Author
+      responses:
+        '200':
+          $ref: '#/components/responses/getAuthor'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateAuthor
+      description: update Author by id
+      tags:
+        - Author
+      requestBody:
+        $ref: '#/components/requestBodies/putAuthor'
+      responses:
+        '200':
+          $ref: '#/components/responses/putAuthor'
+
+    delete:
+      operationId: deleteAuthorById
+      description: delete Author by id
+      tags:
+        - Author
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+          
+
+  /category/list:
+    get:
+      description: List all Categories
+      operationId: GetCategoryList
+      tags:
+        - Category
+      parameters:
+        - $ref: '#/components/parameters/PageNumberParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+        - $ref: '#/components/parameters/SortingFieldParam'
+        - $ref: '#/components/parameters/SortingDirectionParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetCategoryList'
+
+  /category:
+    post:
+      description: Create a category
+      operationId: PostCategory
+      tags:
+        - Category
+      requestBody:
+        $ref: '#/components/requestBodies/postCategory'
+      responses:
+        '201':
+          $ref: '#/components/responses/postCategory'
+
+  /category/{id}:
+
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+
+    get:
+      operationId: getCategoryId
+      description: get Category by id
+      tags:
+        - Category
+      responses:
+        '200':
+          $ref: '#/components/responses/getCategory'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateCategory
+      description: update Category by id
+      tags:
+        - Category
+      requestBody:
+        $ref: '#/components/requestBodies/putCategory'
+      responses:
+        '200':
+          $ref: '#/components/responses/putCategory'
+
+    delete:
+      operationId: deleteCategoryById
+      description: delete Category by id
+      tags:
+        - Category
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+
+  /condition/list:
+    get:
+      description: List all Conditions
+      operationId: GetConditionList
+      tags:
+        - Condition
+      parameters:
+        - $ref: '#/components/parameters/PageNumberParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+        - $ref: '#/components/parameters/SortingFieldParam'
+        - $ref: '#/components/parameters/SortingDirectionParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetConditionList'
+
+  /condition:
+    post:
+      description: Create a condition
+      operationId: PostCondition
+      tags:
+        - Condition
+      requestBody:
+        $ref: '#/components/requestBodies/postCondition'
+      responses:
+        '201':
+          $ref: '#/components/responses/postCondition'
+
+  /condition/{id}:
+
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+
+    get:
+      operationId: getConditionId
+      description: get Condition by id
+      tags:
+        - Condition
+      responses:
+        '200':
+          $ref: '#/components/responses/getCondition'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateCondition
+      description: update Condition by id
+      tags:
+        - Condition
+      requestBody:
+        $ref: '#/components/requestBodies/putCondition'
+      responses:
+        '200':
+          $ref: '#/components/responses/putCondition'
+
+    delete:
+      operationId: deleteConditionById
+      description: delete Condition by id
+      tags:
+        - Condition
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+          
+
+  /book/list:
+    get:
+      description: List all Books
+      operationId: GetBookList
+      tags:
+        - Book
+      parameters:
+        - $ref: '#/components/parameters/PageNumberParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+        - $ref: '#/components/parameters/SortingFieldParam'
+        - $ref: '#/components/parameters/SortingDirectionParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetBookList'
+
+  /book:
+    post:
+      description: Create a book
+      operationId: PostBook
+      tags:
+        - Book
+      requestBody:
+        $ref: '#/components/requestBodies/postBook'
+      responses:
+        '201':
+          $ref: '#/components/responses/postBook'
+
+  /book/{id}:
+
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+
+    get:
+      operationId: getBookId
+      description: get Book by id
+      tags:
+        - Book
+      responses:
+        '200':
+          $ref: '#/components/responses/getBook'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateBook
+      description: update Book by id
+      tags:
+        - Book
+      requestBody:
+        $ref: '#/components/requestBodies/putBook'
+      responses:
+        '200':
+          $ref: '#/components/responses/putBook'
+
+    delete:
+      operationId: deleteBookById
+      description: delete Book by id
+      tags:
+        - Book
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+          
+          
+  /user/list:
+    get:
+      description: List all Users
+      operationId: GetUserList
+      tags:
+        - User
+      parameters:
+        - $ref: '#/components/parameters/PageNumberParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+        - $ref: '#/components/parameters/SortingFieldParam'
+        - $ref: '#/components/parameters/SortingDirectionParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetUserList'
+
+  /user:
+    post:
+      description: Create a user
+      operationId: PostUser
+      tags:
+        - User
+      requestBody:
+        $ref: '#/components/requestBodies/postUser'
+      responses:
+        '201':
+          $ref: '#/components/responses/postUser'
+
+  /user/{id}:
+
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+
+    get:
+      operationId: getUserId
+      description: get User by id
+      tags:
+        - User
+      responses:
+        '200':
+          $ref: '#/components/responses/getUser'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateUser
+      description: update User by id
+      tags:
+        - User
+      requestBody:
+        $ref: '#/components/requestBodies/putUser'
+      responses:
+        '200':
+          $ref: '#/components/responses/putUser'
+
+    delete:
+      operationId: deleteUserById
+      description: delete User by id
+      tags:
+        - User
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+          
+  
+  /order/list:
+    get:
+      description: List all Orders
+      operationId: GetOrderList
+      tags:
+        - Order
+      parameters:
+        - $ref: '#/components/parameters/PageNumberParam'
+        - $ref: '#/components/parameters/PageSizeParam'
+        - $ref: '#/components/parameters/SortingFieldParam'
+        - $ref: '#/components/parameters/SortingDirectionParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetOrderList'
+
+  /order:
+    post:
+      description: Create a order
+      operationId: PostOrder
+      tags:
+        - Order
+      requestBody:
+        $ref: '#/components/requestBodies/postOrder'
+      responses:
+        '201':
+          $ref: '#/components/responses/postOrder'
+
+  /order/{id}:
+
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+
+    get:
+      operationId: getOrderId
+      description: get Order by id
+      tags:
+        - Order
+      responses:
+        '200':
+          $ref: '#/components/responses/getOrder'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateOrder
+      description: update Order by id
+      tags:
+        - Order
+      requestBody:
+        $ref: '#/components/requestBodies/putOrder'
+      responses:
+        '200':
+          $ref: '#/components/responses/putOrder'
+
+    delete:
+      operationId: deleteOrderById
+      description: delete Order by id
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+
+components:
+  schemas:
+
+    PageDto:
+      description: List of PublisherDto with pagination info
+      required:
+        - page
+        - totalPages
+        - pageSize
+      properties:
+        page:
+          description: Current page
+          type: integer
+          format: int32
+        totalPages:
+          description: Total page
+          type: integer
+          format: int32
+        pageSize:
+          description: Quantity of records per page
+          type: integer
+          format: int32
+        totalRows:
+          description: total numbers of rows for the request
+          type: integer
+          format: int64
+        sortField:
+          description: sorting field
+          type: string
+        sortDir:
+          description: sorting direction
+          type: string
+          enum: [ASC, DESC]
+
+
+    PublisherDto:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          
+          
+    AuthorDto:
+      type: object
+      required:
+        - firstName
+        - secondName
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        secondName:
+          type: string
+          
+    
+    CategoryDto:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          
+    ConditionDto:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+
+
+    BookDto:
+      type: object
+      required:
+        - title
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        publicationYear:
+          type: integer
+          format: int32
+        price:
+          type: integer
+          format: int64
+        author:
+          $ref: '#/components/schemas/AuthorDto'
+        publisher:
+          $ref: '#/components/schemas/PublisherDto'
+        condition:
+          $ref: '#/components/schemas/ConditionDto'
+        category:
+          $ref: '#/components/schemas/CategoryDto'
+          
+    UserDto:
+      type: object
+      required:
+        - firstName
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        patronymic:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        password:
+          type: string
+
+
+    OrderDto:
+      type: object
+      required:
+        - user
+      properties:
+        id:
+          type: integer
+          format: int64
+        date:
+          type: string
+          format: date
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookDto'
+        user:
+          $ref: '#/components/schemas/UserDto'
+
+
+  requestBodies:
+
+    getPublisher:
+      description: Body for creating Publisher
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherDto'
+
+    postPublisher:
+      description: Body for creating Publisher
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherDto'
+
+    putPublisher:
+      description: Body for updating Publisher
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherDto'
+            
+    
+    getAuthor:
+      description: Body for creating Author
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthorDto'
+
+    postAuthor:
+      description: Body for creating Author
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthorDto'
+
+    putAuthor:
+      description: Body for updating Author
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthorDto'
+    
+    
+    getCategory:
+      description: Body for creating Category
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryDto'
+
+    postCategory:
+      description: Body for creating Category
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryDto'
+
+    putCategory:
+      description: Body for updating Category
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryDto'
+            
+    
+    getCondition:
+      description: Body for creating Condition
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConditionDto'
+
+    postCondition:
+      description: Body for creating Condition
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConditionDto'
+
+    putCondition:
+      description: Body for updating Condition
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConditionDto'
+            
+            
+    getBook:
+      description: Body for creating Book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookDto'
+
+    postBook:
+      description: Body for creating Book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookDto'
+
+    putBook:
+      description: Body for updating Book
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookDto'
+    
+    
+    getUser:
+      description: Body for creating User
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserDto'
+
+    postUser:
+      description: Body for creating User
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserDto'
+
+    putUser:
+      description: Body for updating User
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserDto'
+            
+            
+    getOrder:
+      description: Body for creating Order
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderDto'
+
+    postOrder:
+      description: Body for creating Order
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderDto'
+
+    putOrder:
+      description: Body for updating Order
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderDto'
+
+  responses:
+
+    getPublisher:
+      description: Get dto of Publisher record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherDto'
+
+    postPublisher:
+      description: Publisher successfully created. Return dto of created record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherDto'
+
+    putPublisher:
+      description: Body for updating Publisher
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PublisherDto'
+
+
+    GetPublisherList:
+      description: List of PublisherDto with pagination info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              records:
+                description: List of records to show
+                type: array
+                items:
+                  $ref: '#/components/schemas/PublisherDto'
+            allOf:
+              - $ref: '#/components/schemas/PageDto'
+    
+    
+    getAuthor:
+      description: Get dto of Author record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthorDto'
+
+    postAuthor:
+      description: Author successfully created. Return dto of created record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthorDto'
+
+    putAuthor:
+      description: Body for updating Author
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthorDto'
+
+
+    GetAuthorList:
+      description: List of AuthorDto with pagination info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              records:
+                description: List of records to show
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthorDto'
+            allOf:
+              - $ref: '#/components/schemas/PageDto'
+                
+    
+    getCategory:
+      description: Get dto of Category record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryDto'
+
+    postCategory:
+      description: Category successfully created. Return dto of created record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryDto'
+
+    putCategory:
+      description: Body for updating Category
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryDto'
+
+
+    GetCategoryList:
+      description: List of AuthorDto with pagination info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              records:
+                description: List of records to show
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryDto'
+            allOf:
+              - $ref: '#/components/schemas/PageDto'
+
+
+    getCondition:
+      description: Get dto of Condition record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConditionDto'
+
+    postCondition:
+      description: Condition successfully created. Return dto of created record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConditionDto'
+
+    putCondition:
+      description: Body for updating Condition
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConditionDto'
+
+
+    GetConditionList:
+      description: List of ConditionDto with pagination info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              records:
+                description: List of records to show
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConditionDto'
+            allOf:
+              - $ref: '#/components/schemas/PageDto'
+                
+    
+    getBook:
+      description: Get dto of Book record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookDto'
+
+    postBook:
+      description: Book successfully created. Return dto of created record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookDto'
+
+    putBook:
+      description: Body for updating Book
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookDto'
+
+
+    GetBookList:
+      description: List of ConditionDto with pagination info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              records:
+                description: List of records to show
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookDto'
+            allOf:
+              - $ref: '#/components/schemas/PageDto'
+
+
+    getUser:
+      description: Get dto of User record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserDto'
+
+    postUser:
+      description: User successfully created. Return dto of created record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserDto'
+
+    putUser:
+      description: Body for updating User
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserDto'
+
+
+    GetUserList:
+      description: List of UserDto with pagination info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              records:
+                description: List of records to show
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDto'
+            allOf:
+              - $ref: '#/components/schemas/PageDto'
+                
+    
+    getOrder:
+      description: Get dto of Order record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderDto'
+
+    postOrder:
+      description: Order successfully created. Return dto of created record
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderDto'
+
+    putOrder:
+      description: Body for updating Order
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderDto'
+
+
+    GetOrderList:
+      description: List of OrderDto with pagination info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              records:
+                description: List of records to show
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDto'
+            allOf:
+              - $ref: '#/components/schemas/PageDto'
+    
+
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                description: Message what exactly not found
+                type: string
+              content:
+                description: Optional content
+                type: object
+
+
+  parameters:
+    PageNumberParam:
+      in: query
+      description: Page number
+      name: pageNumber
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 0
+
+    PageSizeParam:
+      in: query
+      description: Page size
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 10
+
+    SortingFieldParam:
+      in: query
+      description: Sorting field
+      name: sortBy
+      required: false
+      schema:
+        type: string
+        default: id
+
+    SortingDirectionParam:
+      in: query
+      description: Sorting direction
+      name: sortDir
+      required: false
+      schema:
+        type: string
+        enum: ["ASC", "DESC"]
+        default: "ASC"
+
+    IdPathParam:
+      in: path
+      description: Id of record to operate
+      name: id
+      required: true
+      schema:
+        type: integer
+        format: int64

@@ -288,6 +288,7 @@ paths:
         - $ref: '#/components/parameters/PageSizeParam'
         - $ref: '#/components/parameters/SortingFieldParam'
         - $ref: '#/components/parameters/SortingDirectionParam'
+        - $ref: '#/components/parameters/FilterParam'
       responses:
         '200':
           $ref: '#/components/responses/GetBookList'
@@ -370,6 +371,20 @@ paths:
         '201':
           $ref: '#/components/responses/postUser'
 
+  /user/signIn:
+    post:
+      description: Sign in a user
+      operationId: SignInUser
+      tags:
+        - User
+      requestBody:
+        $ref: '#/components/requestBodies/signInUser'
+      responses:
+        '200':
+          $ref: '#/components/responses/postUser'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
   /user/{id}:
 
     parameters:
@@ -420,6 +435,7 @@ paths:
         - $ref: '#/components/parameters/PageSizeParam'
         - $ref: '#/components/parameters/SortingFieldParam'
         - $ref: '#/components/parameters/SortingDirectionParam'
+        - $ref: '#/components/parameters/FilterParam'
       responses:
         '200':
           $ref: '#/components/responses/GetOrderList'
@@ -485,6 +501,8 @@ components:
         - totalPages
         - pageSize
       properties:
+        filter:
+          $ref: '#/components/schemas/FilterDto'
         page:
           description: Current page
           type: integer
@@ -508,6 +526,23 @@ components:
           description: sorting direction
           type: string
           enum: [ASC, DESC]
+
+
+    FilterDto:
+      type: object
+      properties:
+        author.id:
+          type: integer
+          format: int64
+        category.id:
+          type: integer
+          format: int64
+        condition.id:
+          type: integer
+          format: int64
+        user.id:
+          type: integer
+          format: int64
 
 
     PublisherDto:
@@ -604,6 +639,18 @@ components:
         email:
           type: string
         phoneNumber:
+          type: string
+        password:
+          type: string
+
+
+    SignInDto:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
           type: string
         password:
           type: string
@@ -778,6 +825,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UserDto'
+
+    signInUser:
+      description: Body for creating User
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignInDto'
             
             
     getOrder:
@@ -1126,6 +1181,15 @@ components:
         type: string
         enum: ["ASC", "DESC"]
         default: "ASC"
+
+    FilterParam:
+      in: query
+      description: Filter field
+      name: filter
+      required: false
+      explode: false
+      schema:
+        $ref: '#/components/schemas/FilterDto'
 
     IdPathParam:
       in: path

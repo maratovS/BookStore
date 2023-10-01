@@ -1,10 +1,8 @@
 package com.ssau.bookStory.api.impl;
 
 import com.ssau.bookStory.api.generated.api.BookApi;
+import com.ssau.bookStory.api.generated.model.*;
 import com.ssau.bookStory.api.generated.model.BookDto;
-import com.ssau.bookStory.api.generated.model.GetBookList200Response;
-import com.ssau.bookStory.api.generated.model.BookDto;
-import com.ssau.bookStory.api.generated.model.PublisherDto;
 import com.ssau.bookStory.db.domain.*;
 import com.ssau.bookStory.db.repo.*;
 import com.ssau.bookStory.exception.RecordNotFoundException;
@@ -15,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -63,7 +62,7 @@ public class BookApiImpl implements BookApi {
     }
 
     @Override
-    public ResponseEntity<GetBookList200Response> getBookList(Integer pageNumber, Integer pageSize, String sortBy, String sortDir) {
+    public ResponseEntity<GetBookList200Response> getBookList(Integer pageNumber, Integer pageSize, String sortBy, String sortDir, @RequestParam(value = "filter", required = false) FilterDto filter) {
         Page<Book> page = repo.findAll(PageRequest.of(pageNumber, pageSize, Sort.Direction.valueOf(sortDir), sortBy));
         Sort.Order order = page.getSort().stream().findFirst().orElse(Sort.Order.asc("id"));
         GetBookList200Response body = new GetBookList200Response().sortField(order.getProperty())

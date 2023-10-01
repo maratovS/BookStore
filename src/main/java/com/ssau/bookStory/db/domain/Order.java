@@ -20,7 +20,7 @@ public class Order {
 
     private Date date;
 
-    @ManyToMany(mappedBy = "orders")
+    @ManyToMany(mappedBy = "orders", fetch = FetchType.EAGER)
     private Set<Book> books;
 
     @ManyToOne

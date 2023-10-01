@@ -35,7 +35,7 @@ public class Book {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "BOOK_ORDER_DS",
             joinColumns = { @JoinColumn(name = "order_id") },

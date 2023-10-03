@@ -613,6 +613,8 @@ components:
         price:
           type: integer
           format: int64
+        poster:
+          type: string
         author:
           $ref: '#/components/schemas/AuthorDto'
         publisher:

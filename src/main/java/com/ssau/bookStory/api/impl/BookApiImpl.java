@@ -89,6 +89,7 @@ public class BookApiImpl implements BookApi {
                 .title(bookDto.getTitle())
                 .description(bookDto.getDescription())
                 .price(bookDto.getPrice())
+                .poster(bookDto.getPoster())
                 .publicationYear(bookDto.getPublicationYear())
                 .author(authorFound)
                 .publisher(publisherFound)
@@ -116,6 +117,7 @@ public class BookApiImpl implements BookApi {
         found.setTitle(bookDto.getTitle());
         found.setDescription(bookDto.getDescription());
         found.setPrice(bookDto.getPrice());
+        found.setPoster(bookDto.getPoster());
         found.setPublicationYear(bookDto.getPublicationYear());
         found.setAuthor(authorFound);
         found.setPublisher(publisherFound);

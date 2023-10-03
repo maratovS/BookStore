@@ -21,7 +21,7 @@ public class Book {
     private String description;
     private Integer publicationYear;
     private Long price;
-
+    private String poster;
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
